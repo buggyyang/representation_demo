@@ -40,6 +40,13 @@ def render_pitch_sort():
     # avg.append((z_pitch[:, 60] / z_pitch[:, 127]).sum() / z_pitch.shape[0])
     # print(avg)
     plt.xticks(range(5), range(1, 6))
+    plt.tick_params(axis='both', which='major', labelsize=14)
+    ax = plt.gca()
+    vals = ax.get_yticks()
+    ax.set_yticklabels(['{:,.0%}'.format(x) for x in vals])
+    plt.xlabel('dimension indices', fontsize=20)
+    plt.ylabel(r'$\overline{\Delta_f z^p}$', fontsize=20)
+    plt.axvline(1.5, linestyle='--', alpha=0.5)
     plt.savefig('images/pitch_sort.png', bbox_inches = 'tight')
     plt.show()
     
@@ -58,6 +65,13 @@ def render_rhythm_sort():
     #     print('The corresponding value:', z_rhythm[i][np.argsort(
     #         np.abs(z_rhythm[i]))[::-1][:5]])
     plt.xticks(range(10), range(1, 11))
+    plt.tick_params(axis='both', which='major', labelsize=14)
+    ax = plt.gca()
+    vals = ax.get_yticks()
+    ax.set_yticklabels(['{:,.0%}'.format(x) for x in vals])
+    plt.xlabel('dimension indices', fontsize=20)
+    plt.ylabel(r'$\overline{\Delta_f z^r}$', fontsize=20)
+    plt.axvline(4.5, linestyle='--', alpha=0.5)
     plt.savefig('images/rhythm_sort.png', bbox_inches = 'tight')
     plt.show()
     # avg = []
